@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<style>
+    .img-invoice {
+        width: 50px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .head {
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    #invoice thead tr th {
+        text-align: left;
+        border-bottom: 1px solid black;
+        border-top: 1px solid black;
+        padding-top: 4px;
+    }
+
+    #invoice thead tr {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    #invoice tbody tr {
+        padding: 0;
+    }
+
+    .text-center{
+        text-align: center;
+    }
+</style>
+<body>
+<img src="{{ icon }}" class="img-invoice">
+<p class="head">
+    {{ comp.name|upper }}<br>
+    {{ comp.ruc }}<br>
+    {{ comp.address|upper }}
+</p>
+<p>
+    <b>SALIDA:</b> {{ salida.id }}<br>
+    <b>FECHA :</b> {{ salida.fecha }}<br>
+    <b>RESPONSABLE:</b> {{ salida.responsable|upper }}<br>
+</p>
+<table id="invoice">
+    <thead>
+    <tr>
+        <th style="width: 10%;">CODIGO</th>
+        <th style="width: 20%;">CATEGORIA</th>
+        <th style="width: 30%;">PRODUCTO</th>
+        <th style="width: 40%;">DESCRIPCION</th>
+        <th style="width: 10%;">CANTIDAD</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for d in salida.detsalida_set.all %}
+        <tr {% if forloop.first %}style="padding-top: 3px;" {% endif %}>
+            <td>{{ d.prod.codigo }}</td>
+            <td>{{ d.prod.categoria }}</td>
+            <td>{{ d.prod.nombre }}</td>
+            <td>{{ d.prod.descripcion }}</td>
+            <td class="text-center">{{ d.cant }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<table style="margin-top: 250px;">
+    <thead>
+    <tr>
+        <th>****GRACIAS POR SU TIEMPO****</th>
+    </tr>
+    <tr>
+        <th>NOSE ACEPTAN CAMBIOS NI DEVOLUCIONES</th>
+    </tr>
+    </thead>
+</table>
+</body>
+</html>

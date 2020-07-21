@@ -1,0 +1,27 @@
+{% extends 'base/list.html' %}
+{% load static %}
+{% block titulo %}
+    LISTA DE REPUESTOS
+{% endblock  %}
+{% block head_list %}
+<script src="{% static 'bodegas/js/list.js' %}"></script>
+
+{% endblock head_list %}
+{% block columns %}
+    <tr>
+        <th scope="col" style="width: 10%;">Codigo</th>
+        <th scope="col" style="width: 20%;">Nombre</th>
+        <th scope="col" style="width: 40%;">Descripcion</th>
+        <th scope="col" style="width: 15%;">Categoria</th>
+        <th scope="col" style="width: 15%;">Opciones</th>
+    </tr>
+{% endblock %}
+
+{% block rows %}
+
+{% endblock %}
+    
+    {% block javascript %}
+        
+    {% endblock javascript %}
+        
